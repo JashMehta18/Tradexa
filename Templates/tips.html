@@ -1,0 +1,188 @@
+{% extends "master.html" %}
+
+{% block title %}Tradexa{% endblock %}
+
+{% block content %}
+
+<style>
+    .stockImg {
+        height: 12rem;
+        width: 100%;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="mt-2 p-5 bg-secondary text-white rounded">
+        <h2>Candle Stick Tips & Patterns</h2>
+        <h5>What is a candlestick?</h5>
+        <p>A candlestick is a way of displaying information about an asset’s price movement. Candlestick charts are one
+            of
+            the most popular components of technical analysis, enabling traders to interpret price information quickly
+            and from just a few price bars.
+        </p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-secondary"><strong>The body</strong>, which represents the
+                open-to-close range</li>
+            <li class="list-group-item list-group-item-secondary"><strong>The wick</strong>, or shadow, that indicates
+                the intra-day high and low</li>
+            <li class="list-group-item list-group-item-secondary"><strong>The colour</strong>, which reveals the
+                direction of market movement – a green (or white) body indicates a price increase, while a red (or
+                black) body shows a price decrease</li>
+        </ul>
+    </div>
+
+
+    <div class="mt-2 p-5">
+        <h4>Bullish Candle Stick Patterns</h4>
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="card" style="width: 25rem">
+                    <img src="/static/hammer.png" class="stockImg card-img-top" alt="Hammer Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Hammer</h5>
+                        <p class="card-text">The hammer candlestick pattern is formed of a short body with a long lower
+                            wick, and is found at the bottom of a downward trend.<br />
+
+                            A hammer shows that although there were selling pressures during the day, ultimately a
+                            strong buying pressure drove the price back up. The colour of the body can vary, but green
+                            hammers indicate a stronger bull market than red hammers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card" style="width: 25rem">
+                    <img src="/static/inverse-hammer.png" class="stockImg card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Inverse Hammer</h5>
+                        <p class="card-text">A similarly bullish pattern is the inverted hammer. The only difference
+                            being that the upper wick is long, while the lower wick is short.
+
+                            <br />
+                            It indicates a buying pressure, followed by a selling pressure that was not strong enough to
+                            drive the market price down. The inverse hammer suggests that buyers will soon have control
+                            of the market.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-2">
+
+            <div class="col-lg-6">
+                <div class="card" style="width: 25rem">
+                    <img src="/static/bullish-engulfing.png" class="stockImg card-img-top" alt="Hammer Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Bullish engulfing</h5>
+                        <p class="card-text">The bullish engulfing pattern is formed of two candlesticks. The first
+                            candle is a short red body that is completely engulfed by a larger green candle.<br />
+
+                            Though the second day opens lower than the first, the bullish market pushes the price up,
+                            culminating in an obvious win for buyers.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card" style="width: 25rem">
+                    <img src="/static/morning-star.png" class="stockImg card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Morning star</h5>
+                        <p class="card-text">The morning star candlestick pattern is considered a sign of hope in a
+                            bleak market downtrend. It is a three-stick pattern: one short-bodied candle between a long
+                            red and a long green. Traditionally, the ‘star’ will have no overlap with the longer bodies,
+                            as the market gaps both on open and close.
+
+                            <br />
+                            It signals that the selling pressure of the first day is subsiding, and a bull market is on
+                            the horizon.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mt-2 p-5">
+        <h4>Bearish Candle Stick Patterns</h4>
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="card" style="width: 25rem">
+                    <img src="/static/hanging-man.png" class="stockImg card-img-top" alt="Hammer Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Hanging man</h5>
+                        <p class="card-text">The hanging man is the bearish equivalent of a hammer; it has the same
+                            shape but forms at the end of an uptrend.<br />
+
+                            It indicates that there was a significant sell-off during the day, but that buyers were able
+                            to push the price up again. The large sell-off is often seen as an indication that the bulls
+                            are losing control of the market.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card" style="width: 25rem">
+                    <img src="/static/shooting-star.png" class="stockImg card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Shooting star</h5>
+                        <p class="card-text">The shooting star is the same shape as the inverted hammer, but is formed
+                            in an uptrend: it has a small lower body, and a long upper wick.
+
+                            <br />
+                            Usually, the market will gap slightly higher on opening and rally to an intra-day high
+                            before closing at a price just above the open – like a star falling to the ground.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-2">
+
+            <div class="col-lg-6">
+                <div class="card" style="width: 25rem">
+                    <img src="/static/bearish-engulfing.png" class="stockImg card-img-top" alt="Hammer Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Bearish engulfing</h5>
+                        <p class="card-text">A bearish engulfing pattern occurs at the end of an uptrend. The first
+                            candle has a small green body that is engulfed by a subsequent long red candle.<br />
+
+                            It signifies a peak or slowdown of price movement, and is a sign of an impending market
+                            downturn. The lower the second candle goes, the more significant the trend is likely to be.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card" style="width: 25rem">
+                    <img src="/static/evening-star.png" class="stockImg card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Evening star</h5>
+                        <p class="card-text">The evening star is a three-candlestick pattern that is the equivalent of
+                            the bullish morning star. It is formed of a short candle sandwiched between a long green
+                            candle and a large red candlestick.
+
+                            <br />
+                            It indicates the reversal of an uptrend, and is particularly strong when the third
+                            candlestick erases the gains of the first candle.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+{% endblock content %}

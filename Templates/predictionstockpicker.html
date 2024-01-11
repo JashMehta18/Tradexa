@@ -1,0 +1,32 @@
+{% extends "master.html" %}
+
+{% block title %}Tradexa{% endblock %}
+
+{% block content %}
+<div class="container stock-wrapper">
+    <h1>Prediction Stock Data</h1>
+    <p>Please select a stock of your interest</p>
+
+
+    <!-- stock picker for live data -->
+    <form action="/stockprediction">
+        <select class="form-select form-select-lg mb-3" aria-label="multiple select example" name="stockpicker">
+            {% for i in stockpicker %}
+            <option value="{{i}}">{{i}}</option>
+            {% endfor %}
+        </select>
+
+        <div class="d-grid gap-2">
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
+
+    </form>
+
+    <p class="mt-3">Interested in Penny Stocks..? We got you covered, Click on the button below.</p><a class="btn btn-primary mt-3" href="/pennystockpicker" role="button">Penny Stock Picker</a>
+
+
+</div>
+
+
+
+{% endblock content %}

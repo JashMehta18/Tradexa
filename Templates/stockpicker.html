@@ -1,0 +1,62 @@
+{% extends "master.html" %}
+
+{% block title %}Tradexa{% endblock %}
+
+{% block content %}
+
+<div class="container stock-wrapper">
+    <h1>Live Stocks Data</h1>
+    <p>Please select stocks of your interest</p>
+
+    <!-- stock picker for live data -->
+    <form action="/stocktracker">
+        <select class="form-select form-select-lg mb-3" multiple aria-label="multiple select example"
+            name="stockpicker">
+            {% for i in stockpicker %}
+            <option value="{{i}}">{{i}}</option>
+            {% endfor %}
+        </select>
+
+
+        <!-- stockpicker for live graph select only 1 -->
+
+        <h1 class="mt-3">Stock For Graph</h1>
+        <p>Select one stock from the above selected stocks</p>
+
+        <select class="form-select mt-3" aria-label="Default select example" name="graphstockpicker">
+            {% for i in stockpicker %}
+            <option value="{{i}}">{{i}}</option>
+            {% endfor %}
+        </select>
+
+        <br>
+
+        <div class="d-grid gap-2">
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
+
+
+    </form>
+
+
+
+</div>
+
+
+{% endblock content %}
+
+{% block js %}
+
+<script>
+    var toastTrigger = document.getElementById('liveToastBtn')
+    var toastLiveExample = document.getElementById('liveToast')
+    if (toastTrigger) {
+        toastTrigger.addEventListener('click', function () {
+            var toast = new bootstrap.Toast(toastLiveExample)
+
+            toast.show()
+        })
+    }
+</script>
+
+{% endblock js %}

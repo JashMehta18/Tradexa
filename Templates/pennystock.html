@@ -1,0 +1,27 @@
+{% extends "master.html" %}
+
+{% block title %}Tradexa{% endblock %}
+
+{% block content %}
+<div class="container stock-wrapper">
+    <h1>Prediction Stock Data</h1>
+    <p>Please select a penny stock of your interest</p>
+    <!-- stock picker for live data -->
+    <form action="/pennystockprediction">
+        <select class="form-select form-select-lg mb-3" aria-label="multiple select example" name="pennystockpicker">
+            <option value="JPPOWER.NS">JPPOWER</option>
+            <option value="SUZLON.NS">SUZLON</option>
+        </select>
+
+        <div class="d-grid gap-2">
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
+
+    </form>
+
+
+</div>
+
+
+
+{% endblock content %}

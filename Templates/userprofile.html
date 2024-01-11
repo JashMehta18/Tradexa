@@ -1,0 +1,209 @@
+{% extends "master.html" %}
+
+{% block title %}Tradexa{% endblock %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<style>
+    .account-settings .user-profile {
+        margin: 0 0 1rem 0;
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+
+    .account-settings .user-profile .user-avatar {
+        margin: 0 0 1rem 0;
+    }
+
+    .account-settings .user-profile .user-avatar img {
+        width: 90px;
+        height: 90px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+    }
+
+    .account-settings .user-profile h5.user-name {
+        margin: 0 0 0.5rem 0;
+    }
+
+    .account-settings .user-profile h6.user-email {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: #9fa8b9;
+    }
+
+    .account-settings .about {
+        margin: 2rem 0 0 0;
+        text-align: center;
+    }
+
+    .account-settings .about h5 {
+        margin: 0 0 15px 0;
+        color: #007ae1;
+    }
+
+    .account-settings .about p {
+        font-size: 0.825rem;
+    }
+
+    .form-control {
+        border: 1px solid #cfd1d8;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        font-size: .825rem;
+        background: #ffffff;
+        color: #2e323c;
+    }
+
+    .card {
+        background: #ffffff;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 0;
+        margin-bottom: 1rem;
+    }
+
+    .profile-container {
+        margin-top: 2rem;
+        -webkit-box-shadow: 3px 4px 15px -2px rgba(110, 110, 110, 1);
+        -moz-box-shadow: 3px 4px 15px -2px rgba(110, 110, 110, 1);
+        box-shadow: 3px 4px 15px -2px rgba(110, 110, 110, 1);
+        border-radius: 15px;
+    }
+</style>
+{% for message in messages %}
+    {% if message.tags == "error" %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endfor %}
+        {% for message in messages.success %}
+        <div class="alert alert-success">
+            <a class="close" href="" data-dismiss="alert">×</a>
+            {{ message }}
+        </div>
+        {% endfor %}
+<form method="POST" class="container profile-container" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+        <div class="row gutters">
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="account-settings">
+                            <div class="user-profile">
+                                <div class="user-avatar">
+                                    <img src="{{user.profile.image.url}}" alt="Maxwell Admin">
+                                </div>
+                                <h5 class="user-name">{{user.username}}</h5>
+                                <h6 class="user-email">{{email}}</h6>
+                            </div>
+                            <div class="about">
+                                <h5>About</h5>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod, dolores.
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-2 text-primary">Personal Details</h6>
+                            </div>
+                            
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-floating">
+                                    {{ u_form.first_name|as_crispy_field }}
+                                    <!-- <label for="floatingInput">Email</label> -->
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-floating">
+                                    {{ u_form.last_name|as_crispy_field }}
+                                    <!-- <label for="floatingInput">Email</label> -->
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2">
+                                <div class="form-floating">
+                                    {{ u_form.username|as_crispy_field }}
+                                    <!-- <label for="floatingInput">Username</label> -->
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2">
+                                <div class="form-floating">
+                                    {{ p_form.phone_number|as_crispy_field }}
+                                    <!-- <label for="floatingInput">Phone</label> -->
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2">
+                                <div class="form-floating">
+                                    {{ p_form.image|as_crispy_field }}
+                                    <!-- <label for="floatingInput">Phone</label> -->
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mt-3 text-primary">Address</h6>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-floating">
+                                    {{ p_form.street|as_crispy_field }}
+                                    <!-- <label for="floatingInput">Street</label> -->
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-floating">
+                                    {{ p_form.city|as_crispy_field }}
+                                    <!-- <label for="floatingInput">City</label> -->
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2">
+                                <div class="form-floating">
+                                    {{ p_form.state|as_crispy_field }}
+                                    <!-- <label for="floatingInput">State</label> -->
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2">
+                                <div class="form-floating">
+                                    {{ p_form.zip|as_crispy_field }}
+                                    <!-- <label for="floatingInput">Zip Code</label> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters mt-3">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <button type="submit" id="submit" name="submit" class="btn btn-primary">Update</button>
+                                    <a href="/changepassword"><button type="button" class="btn btn-primary">Change Password</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+
+{% endblock content %}

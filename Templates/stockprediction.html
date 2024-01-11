@@ -1,0 +1,46 @@
+{% extends "master.html" %}
+
+{% block title %}Tradexa{% endblock %}
+
+{% load myfilters %}
+
+{% block content %}
+
+<div class="container">
+  {% if graph %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Please Note,</strong> We do not gurantee 100% assurance.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<div style="width:100%;height:95%">
+{{ graph|safe }}
+</div>
+{% endif %}
+
+
+<!-- {{data}} -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Today's Market Open</h5>
+          <p class="card-text">{{data.Open}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Current Market Volume</h5>
+          <p class="card-text">{{data.Volume}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}
+</div>

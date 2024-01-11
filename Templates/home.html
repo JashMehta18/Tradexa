@@ -1,0 +1,379 @@
+{% extends "master.html" %}
+
+{% block title %}Tradexa{% endblock %}
+
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% if not request.session.loggeduser %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Upgrade to premium account and get access to premium features</strong>
+    <form action="{% url 'Base:success' %}" method="POST">
+        {% csrf_token %}
+
+        <!-- RAZORPAY INTEGRATION HERE -->
+        <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="rzp_test_oQsuE6quyQWrpT"
+            data-amount="10000" data-currency="INR" data-order_id="{{payment.id}}" data-buttontext="Pay with Razorpay"
+            data-name="Tradexa Pro User" data-description="Tradexa Pro User"
+            data-image="https://example.com/your_logo.jpg" data-prefill.name="User Name"
+            data-prefill.email="user@email.com" data-theme.color="#F37254"></script>
+    </form>
+
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+{% endif %}
+
+<style>
+    .rowBG {
+        height: 80vh;
+    }
+
+    .rowBG img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    /* .card-wrapper {
+        background: url('/static/card-bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    } */
+
+    .card-bg {
+        position: absolute;
+        height: 7rem;
+        width: 9rem;
+        right: 0;
+        bottom: -10px;
+    }
+
+    .icon {
+        font-size: 20px;
+        border-radius: 45px;
+        padding: 7px;
+        background-color: #1266F1;
+        color: white;
+    }
+
+    .card-adv {
+        border: none;
+    }
+
+
+    .adv-cont {
+        margin-top: 100px !important;
+    }
+
+    .marketpulse-container {
+        margin-top: 200px;
+        margin-bottom: 200px;
+        padding: 20px 40px;
+        background-color: #101010;
+        border-radius: 15px;
+        position: relative;
+    }
+
+    .pulse-img {
+        height: 80%;
+        width: 80%;
+    }
+
+    .phone-img {
+        height: 20rem;
+        width: 11rem;
+        position: absolute;
+        right: 12%;
+        top: -30%;
+        transform: rotate(15deg);
+        border-radius: 20px;
+        box-shadow: 0 1px 10px #cecece, 0 -1px 10px #cecece;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .home-bg {
+            display: none;
+        }
+
+        .brand-wrapper {
+            width: 100%;
+        }
+
+        .brand-description {
+            width: 100%;
+        }
+
+        .rowBG {
+            height: auto;
+        }
+
+        .features-wrapper:nth-child(1) {
+            margin-top: 20px;
+        }
+
+        .features-wrapper:nth-child(2) {
+            margin-top: 40px;
+        }
+
+        .features-img {
+            height: 150px;
+            width: 130px;
+        }
+
+
+    }
+
+    @media only screen and (max-width: 900px) {
+        .phone-img {
+            height: 400px;
+            width: 150px;
+            object-fit: cover;
+        }
+    }
+
+    @media only screen and (max-width: 900px) {
+        .phone-img {
+            display: none;
+        }
+    }
+</style>
+<!-- brand description -->
+<div class="container-fluid rowBG">
+
+    <img class="home-bg" src="/static/home-bg4.png" alt="Image">
+
+    <div class="row px-3">
+        <div class="brand-wrapper col-5">
+            <div class="brand-description mt-5" style="display: flex;flex-direction: column;justify-content: center">
+                <h2>Tradexa</h2>
+                <p class="mt-3" style="line-height: 2">
+                    A company you can trust with the intention of making the world smarter, happier and richer.
+                </p>
+            </div>
+
+            <div class="register mt-3">
+                {% if user.is_authenticated %}
+                <a href="register/"><button type="button" class="btn btn-primary">Contact Us</button></a>
+                {% else %}
+                <a href="register/"><button type="button" class="btn btn-primary">Register Now</button></a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- brand-features -->
+<div class="container mt-5">
+    <div>
+        <h2 class="fw-normal">Get the most out<br>of your investment</h2>
+    </div>
+    <div class="row mt-4">
+        <div class="features-wrapper col-md-5">
+            <div class="card brand-card">
+                <div class="card-body">
+                    <h5 class="card-title">Stock Prediction</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+                <img src="/static/card-bg2.png" class="features-img card-bg" alt="...">
+            </div>
+        </div>
+
+        <div class="features-wrapper col-md-7">
+            <div class="card brand-card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Live Stock Statistics</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's.</p>
+                </div>
+                <img src="/static/card-bg3.png" class="features-img card-bg" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Advantages -->
+<div class="container adv-cont mt-5">
+    <div class="row">
+        <div class="col-sm-4 py-5">
+            <h2 class="fw-normal">Advantages</h2>
+            <p>We listen to our customers and work with them to improve the experience of our platform.</p>
+        </div>
+        <div class="col-sm-8 p-2">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card p-1 card-adv">
+                        <div class="card-body">
+                            <h4 class="card-title fw-normal"><i class="bi bi-ui-radios icon"></i> &nbsp; Smooth Start
+                            </h4>
+                            <p class="card-text">Setting up your account with Tradexa is simple, smooth and hassle free.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card p-1 card-adv">
+                        <div class="card-body">
+                            <h4 class="card-title fw-normal"><i class="bi bi-question-lg icon"></i> &nbsp; 24/7 Support
+                            </h4>
+                            <p class="card-text">We are always there to support you, answer questions and resolve any
+                                issues.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card p-1 card-adv">
+                        <div class="card-body">
+                            <h4 class="card-title fw-normal"><i class="bi bi-aspect-ratio icon"></i> &nbsp; User
+                                Friendly</h4>
+                            <p class="card-text">The interface is developed considering each type of user, so it is easy
+                                to use.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card p-1 card-adv">
+                        <div class="card-body">
+                            <h4 class="card-title fw-normal"><i class="bi bi-phone icon"></i> &nbsp; Responsive</h4>
+                            <p class="card-text">Experince the same pleasure of using our application on your mobile
+                                devices too.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Top gainers and loosers -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-6 py-5">
+            <h3 class="fw-normal text-center">Top Nse Gainers</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Turn Over</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in gainers %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.symbol }}</td>
+                        <td>{{ i.turnoverInLakhs }}L</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col-sm-6 py-5">
+            <h3 class="fw-normal text-center">Top Nse Loosers</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Turn Over</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in loosers %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.symbol }}</td>
+                        <td>{{ i.turnoverInLakhs }}L</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Invest market pulse -->
+<div class="container marketpulse-container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-4 p-2">
+            <img src="/static/pulse.gif" class="img-fluid pulse-img" alt="image">
+        </div>
+
+        <div class="col-sm-4 py-4">
+            <h5 style="color: white;" class="fw-normal">Keep your finger on the Investment Market Pulse.</h5>
+            <a href="register/"><button type="button" class="btn btn-light">Join Now</button></a>
+        </div>
+
+        <div class="col-sm-4">
+            <img src="/static/pulse-phone.png" class="img-fluid phone-img" alt="image">
+        </div>
+
+    </div>
+</div>
+
+
+<!-- contact us form -->
+<div class="container mt-5">
+    <div>
+        <h2 class="fw-normal">Contact us</h2>
+    </div>
+    <br />
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible mt-2">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <p>{{message}}</p>
+    </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-6">
+            <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=KJSCE,%20Vidya%20Vihar%20East,%20Ghatkopar%20East,%20Mumbai,%20Maharashtra%20400077+(KJSCE)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+        </div>
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary mt-2" type="submit">Submit</button>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<footer class="bg-dark text-center text-lg-start mt-5">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <span style="color: white;">© 2020 Copyright:</span>
+        <a class="text-light" href="home.html">TradeXa</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
+{% endblock %}
