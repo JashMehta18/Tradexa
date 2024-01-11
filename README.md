@@ -11,4 +11,4 @@ sophisticated AI techniques like Neural Net-
 works for clear visual representations in stock
 analysis, fostering informed decision-making
 
-#For More Details about the Project Checkout Documents in the Repository
+# For More Details about the Project Checkout Documents in the Repository
